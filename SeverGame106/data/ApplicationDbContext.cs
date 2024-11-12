@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Client;
+using ServerGame106.Models;
 using SeverGame106.Models;
-namespace SeverGame106.data
+
+namespace ServerGame106.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -10,8 +11,8 @@ namespace SeverGame106.data
         public DbSet<GameLevel> GameLevels { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Region> Regions { get; set; }
-        public DbSet<LevelResult> LevelResults { get; set; }
         public DbSet<ApplicationUser> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

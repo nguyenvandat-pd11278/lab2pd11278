@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SeverGame106.data;
+using ServerGame106.Data;
 
 #nullable disable
 
@@ -264,32 +264,6 @@ namespace SeverGame106.Migrations
                             LevelId = 3,
                             title = "Cấp độ 3"
                         });
-                });
-
-            modelBuilder.Entity("SeverGame106.Models.LevelResult", b =>
-                {
-                    b.Property<int>("QuizResultId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuizResultId"));
-
-                    b.Property<DateOnly>("CompletionDate")
-                        .HasColumnType("date");
-
-                    b.Property<int>("LevelId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Score")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("QuizResultId");
-
-                    b.ToTable("LevelResults");
                 });
 
             modelBuilder.Entity("SeverGame106.Models.Question", b =>

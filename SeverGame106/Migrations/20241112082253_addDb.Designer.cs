@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SeverGame106.data;
+using ServerGame106.Data;
 
 #nullable disable
 
 namespace SeverGame106.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241109144217_addUserModelToDb")]
-    partial class addUserModelToDb
+    [Migration("20241112082253_addDb")]
+    partial class addDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -250,6 +250,23 @@ namespace SeverGame106.Migrations
                     b.HasKey("LevelId");
 
                     b.ToTable("GameLevels");
+
+                    b.HasData(
+                        new
+                        {
+                            LevelId = 1,
+                            title = "Cấp độ 1"
+                        },
+                        new
+                        {
+                            LevelId = 2,
+                            title = "Cấp độ 2"
+                        },
+                        new
+                        {
+                            LevelId = 3,
+                            title = "Cấp độ 3"
+                        });
                 });
 
             modelBuilder.Entity("SeverGame106.Models.Question", b =>
@@ -290,6 +307,30 @@ namespace SeverGame106.Migrations
                     b.HasKey("QuestionId");
 
                     b.ToTable("Questions");
+
+                    b.HasData(
+                        new
+                        {
+                            QuestionId = 1,
+                            Answer = "Đáp án 1",
+                            ContentQuestion = "Câu hỏi 1",
+                            LevelId = 1,
+                            Option1 = "Đáp án 1",
+                            Option2 = "Đáp án 2",
+                            Option3 = "Đáp án 3",
+                            Option4 = "Đáp án 4"
+                        },
+                        new
+                        {
+                            QuestionId = 2,
+                            Answer = "Đáp án 2",
+                            ContentQuestion = "Câu hỏi 2",
+                            LevelId = 2,
+                            Option1 = "Đáp án 1",
+                            Option2 = "Đáp án 2",
+                            Option3 = "Đáp án 3",
+                            Option4 = "Đáp án 4"
+                        });
                 });
 
             modelBuilder.Entity("SeverGame106.Models.Region", b =>
@@ -307,6 +348,18 @@ namespace SeverGame106.Migrations
                     b.HasKey("RegionId");
 
                     b.ToTable("Regions");
+
+                    b.HasData(
+                        new
+                        {
+                            RegionId = 1,
+                            Name = "Đồng bằng sông hồng"
+                        },
+                        new
+                        {
+                            RegionId = 2,
+                            Name = "Đồng bằng sông cuu long"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

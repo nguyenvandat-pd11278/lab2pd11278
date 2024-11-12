@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SeverGame106.data;
+using ServerGame106.Data;
 using SeverGame106.Models;
 
 namespace SeverGame106
@@ -17,6 +17,11 @@ namespace SeverGame106
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new() { Title = "SeverGame106", Version = "v1" });
+            });
+
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -32,6 +37,9 @@ namespace SeverGame106
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(C => C.SwaggerEndpoint("/swagger/v1/swagger.json", "SeverGame106"));
 
             app.UseRouting();
 
